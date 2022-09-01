@@ -3,6 +3,8 @@ import 'package:medre/Medicine1Container.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'Medicine2Container.dart';
 import 'Medicine3Container.dart';
+import 'Medicine4Container.dart';
+import 'Medicine5Container.dart';
 var medicineContainerCounter = 2;
 var kPrimaryTeal = Colors.teal[400];
 var kSecondaryGreen = Color(0xFF82DBD8);
@@ -88,17 +90,34 @@ class _MyHomePageState extends State<MyHomePage> {
               Medicine1Container(),
                Medicine2Container(),
               Medicine3Container(),
+              Medicine4Container(),
+              Medicine5Container(),
+
 
               MaterialButton(
                 child: Text('Add Medicine'),
                   onPressed: (){
                     setState(() {
-                      visible2 =true;
+                      if(medicineContainerCounter == 5){
+                        visible5 = true;
+                        medicineContainerCounter++;
+                      }
 
+                      if(medicineContainerCounter == 4){
+                        visible4 = true;
+                        medicineContainerCounter++;
+                      }
                       if(medicineContainerCounter == 3){
                         visible3 = true;
+                        medicineContainerCounter++;
                       }
-                      medicineContainerCounter++;
+                      if(medicineContainerCounter == 2){
+                        visible2 = true;
+                        medicineContainerCounter++;
+                      }
+
+
+
 
                     });
                   }),
@@ -112,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text("Send Prescription", style: TextStyle(color:Colors.white),),
                 color:kSecondaryGreen,
                   onPressed: () async{
-                  launch('sms:$recipents?body= $medicine1($timing1morning$timing1afternoon$timing1night)$medicine2($timing2morning$timing2afternoon$timing2night)$medicine3($timing3morning$timing3afternoon$timing3night)');
+                  launch('sms:$recipents?body= $medicine1($timing1morning$timing1afternoon$timing1night)$medicine2($timing2morning$timing2afternoon$timing2night)$medicine3($timing3morning$timing3afternoon$timing3night)$medicine4($timing4morning$timing4afternoon$timing4night)$medicine5($timing5morning$timing5afternoon$timing5night)');
                   setState(() {
 
                   });
